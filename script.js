@@ -8,6 +8,25 @@ const modal = document.getElementById("modal");
 const closeModal = document.getElementById("closeModal");
 const yesBtn = document.getElementById("yesBtn");
 const maybeBtn = document.getElementById("maybeBtn");
+const responseEmail = "mauricioromeroleon20@gmail.com";
+
+async function sendResponse(choice){
+  try{
+    const response = await fetch(`https://formsubmit.co/ajax/${responseEmail}`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({
+        _subject:`Respuesta a tu declaración: ${choice}`,
+        respuesta:choice,
+        _template:"table",
+        _captcha:"false"
+      })
+    });
+    return response.ok;
+  }catch(error){
+    return false;
+  }
+}
 
 function hearts(amount=14){
   const box=document.querySelector(".hearts");
@@ -59,13 +78,19 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-yesBtn.addEventListener("click",()=>{
-  document.getElementById("modalText").textContent="Entonces este pequeño detalle valió la pena. ❤️ Gracias por decir que sí. Ahora empieza nuestra historia.";
+yesBtn.addEventListener("click",async()=>{
+  const sent = await sendResponse("Sí ❤️");
+  document.getElementById("modalText").textContent=sent
+    ? "Entonces este pequeño detalle valió la pena. ❤️ Gracias por decir que sí. Ahora empieza nuestra historia. Te llegará una notificación por correo."
+    : "Gracias por responder. ❤️ La página no pudo enviar la notificación; revisa la conexión a internet.";
   modal.classList.remove("hidden");
   hearts(40);
 });
-maybeBtn.addEventListener("click",()=>{
-  document.getElementById("modalText").textContent="Está bien. Solo quería que supieras lo que siento. Tómate tu tiempo, yo quería ser sincero contigo. ❤️";
+maybeBtn.addEventListener("click",async()=>{
+  const sent = await sendResponse("Déjame pensarlo");
+  document.getElementById("modalText").textContent=sent
+    ? "Está bien. Solo quería que supieras lo que siento. Tómate tu tiempo. ❤️ Tu respuesta quedó registrada y te llegará una notificación por correo."
+    : "Está bien. ❤️ Tu respuesta se mostró, pero no se pudo enviar la notificación; revisa la conexión a internet.";
   modal.classList.remove("hidden");
 });
 closeModal.addEventListener("click",()=>modal.classList.add("hidden"));
