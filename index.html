@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12091f">
+  <title>Una sorpresa para ti ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="glow"></div>
+      <div class="hero-card">
+        <p class="eyebrow">Tengo algo que decirte</p>
+        <h1>No sé cómo decirlo...<br><span>así que hice esto para ti.</span></h1>
+        <p class="intro">Antes de continuar, sube el volumen y déjame regalarte unos minutos que preparé especialmente para ti.</p>
+        <button class="primary" id="openBtn">
+          <span>✨ Abrir mi sorpresa</span>
+        </button>
+        <p class="tiny">Con música incluida · hecha con cariño</p>
+      </div>
+    </section>
+
+    <section class="story hidden" id="story">
+      <div class="music-pill">
+        <button id="musicBtn" aria-label="Pausar música">♫</button>
+        <div>
+          <strong>Una canción para este momento</strong>
+          <span id="musicState">Reproduciendo</span>
+        </div>
+        <div class="equalizer" id="equalizer"><i></i><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="section reveal">
+        <p class="eyebrow">Hay personas que llegan...</p>
+        <h2>y sin darse cuenta,<br><em>lo cambian todo.</em></h2>
+        <p>Quizá no exista una forma perfecta de explicar lo que alguien puede llegar a significar. Pero sí existe la intención de intentarlo.</p>
+      </div>
+
+      <div class="memory reveal">
+        <div class="memory-number">01</div>
+        <div>
+          <p class="eyebrow">Lo que me pasa contigo</p>
+          <h3>Me gusta cómo haces especiales los momentos normales.</h3>
+          <p>Una conversación cualquiera, una mirada, una risa... contigo, pequeñas cosas terminan teniendo un significado enorme.</p>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <span>“</span>
+        <p>No quería quedarme con las ganas de decirte algo que llevo tiempo sintiendo.</p>
+      </div>
+
+      <div class="letter reveal">
+        <p class="eyebrow">Ahora sí...</p>
+        <h2>Quiero preguntarte algo.</h2>
+        <div class="letter-body">
+          <p>He pensado mucho en cómo decirlo sin que suene demasiado ensayado, porque lo que siento no salió de un guion.</p>
+          <p>Solo sé que cuando pienso en ti, sonrío. Que disfruto hablar contigo. Que me importas más de lo que quizá he sabido demostrar.</p>
+          <p>Y por eso hoy decidí dejar el miedo a un lado y ser completamente sincero contigo.</p>
+        </div>
+      </div>
+
+      <div class="question reveal">
+        <div class="ring">♥</div>
+        <p class="eyebrow">Mi pregunta para ti</p>
+        <h2>¿Quieres ser<br><em>mi persona especial?</em></h2>
+        <p class="question-sub">No tienes que responder con palabras bonitas. Solo quiero una respuesta sincera.</p>
+        <div class="answers">
+          <button class="yes" id="yesBtn">Sí ❤️</button>
+          <button class="maybe" id="maybeBtn">Déjame pensarlo</button>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-heart">♥</div>
+        <p>Hecho especialmente para ti.</p>
+        <small>Una pequeña página para una gran pregunta.</small>
+      </footer>
+    </section>
+  </main>
+
+  <audio id="song" src="declaracion_music.mp3" preload="auto" loop></audio>
+  <div class="modal hidden" id="modal">
+    <div class="modal-card">
+      <div class="modal-icon">❤️</div>
+      <h2>Sabía que quería intentarlo.</h2>
+      <p id="modalText">Entonces déjame empezar por decirte que me haces muy feliz.</p>
+      <button class="primary" id="closeModal">Continuar ✨</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
